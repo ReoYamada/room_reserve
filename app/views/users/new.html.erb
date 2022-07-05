@@ -1,0 +1,29 @@
+<div class="form_wrapper">
+  <p>新しいアカウントを作成する</p>
+  <%= form_with model: @user do |f|%>
+    <div class="form_content">
+      <a><span>必須</span><%= f.text_field :name, :placeholder => "ユーザー名", :value => flash[:name] %></a>
+    </div>
+    <div class="form_content">
+      <a><span>必須</span><%= f.text_field :email, :placeholder => "メールアドレス", :value => flash[:email] %></a>
+    </div>
+    <div class="form_content">
+      <a><span>必須</span><%= f.text_field :password, :placeholder => "パスワード", :value => flash[:password] %></a>
+    </div>
+    <div class="form_content">
+      <a><span>必須</span><%= f.text_field :password_confirmation, :placeholder => "パスワード確認"%></a>
+    </div>
+    <% if flash[:error_message].present? %>
+      <% flash[:error_message].each do |error| %>
+        <div>
+          <%=error%>
+        </div>
+      <% end %>
+    <% end %>
+    <%= f.submit "アカウントの作成", :class => "create_btn" %>
+  <% end %>
+  <div>
+    <%=link_to "ログインページはこちら",login_path %>
+  </div>
+  
+</div>

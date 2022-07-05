@@ -5,12 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- googleフォント導入 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <!-- ここまで -->
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <header>
+    <div>
+      <%=link_to image_tag("/assets/logo.png", class: "top_logo"), "/" %>
+      <%= form_with url:search_path, :class => "search", :method => "get" do |f|%>
+        <%= f.text_field :erea_search, :placeholder => "エリア検索" %>
+        <%= f.text_field :keyword_search, :placeholder => "キーワード検索" %>
+        <%= f.submit :class => "submit"%>
+      <%end%>
+    </div>
+    <div>
+      <%if session[:id] %>
+        <%= link_to "マイページ", user_path(session[:id]) %>
+        <%= link_to "ログアウト", logout_path, method: :post%>
+      <% else %>
+        <%= link_to "アカウント作成", new_user_path %>
+        <%= link_to "ログイン", login_path %>
+      <% end %>
+    </div>
+  </header>
+  
+  <div class="main-wrapper">
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+    <body>
+      <%= yield %>
+    </body>
+  </div>
+  <footer>
+    
+    <p id="footer_logo"> ©️ 2022 Yamada.INC.</p>
+  </footer>
 </html>

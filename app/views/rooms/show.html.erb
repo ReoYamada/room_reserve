@@ -1,0 +1,44 @@
+<h2>ルーム詳細ページ</h2>
+<div class="room_wrapper">
+  <div class="room_info">
+    <div class="room_show_image">
+      <img src="<%= @room.room_image %>">
+    </div>
+    <div class="room_contents">
+      <h3>ルーム名</h3>
+      <p><%=@room.name%></p>
+      <h3>紹介文</h3>
+      <p><%=@room.introduction%></p>
+      <h3>１日宿泊料金</h3>
+      <p><%=@room.price%>円</p>
+      <h3>住所</h3>
+      <p><%=@room.address%></p>
+      <% if session[:id] == @room.user_id %>
+        <%= link_to "ルーム編集", edit_room_path(@room)%>
+      <% end %>
+      <%= link_to "ルーム一覧に戻る", rooms_path %>
+      <% if @user.present? %>
+        <div>
+          <%= form_with url: new_reserve_path, method: :get do |f|%>
+            <div class="form_content">
+              <p>開始日<%= f.date_field :start_day %></p>
+            </div>
+            <div class="form_content">
+              <p>終了日<%= f.date_field :end_day%></p>
+            </div>
+            <div class="form_content">
+              <p>人数<%= f.text_field :number_of_people %></p>
+            </div>
+            
+            <%= f.hidden_field :user_id, value:@user.id %>
+            <%= f.hidden_field :room_id, value:@room.id %>
+            <% if flash[:error].present? %>
+              <%= flash[:error] %>
+            <% end %>
+            <%= f.submit "予約する", :class => "create_btn" %>
+          <% end %>
+        </div>
+      <% end %>  
+    </div>
+  </div>
+</div>

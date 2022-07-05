@@ -1,0 +1,33 @@
+<div class="form_wrapper">
+  <p>ルームの編集</p>
+  <%= form_with model: @room do |f|%>
+    <div class="form_content">
+      <%= f.text_field :name, :placeholder => "ルーム名" %>
+    </div>
+    <div class="form_content">
+      <%= f.text_field :introduction, :placeholder => "ルーム紹介文" %>
+    </div>
+    <div class="form_content">
+      <%= f.text_field :price, :placeholder => "料金" %>
+    </div>
+    <div class="form_content">
+      <%= f.text_field :address, :placeholder => "住所"%>
+    </div>
+    <div class="form_content">
+      <%= f.label :room_image, "ルーム画像アップロード", :class=> "image_input_btn"%>
+      <%= f.file_field :room_image, :class => "image_form"%>
+    </div>
+    <% if flash[:error_message].present? %>
+      <% flash[:error_message].each do |error| %>
+        <div>
+          <%=error%>
+        </div>
+      <% end %>
+    <% end %>
+    <%= f.submit "ルームの登録", :class => "create_btn" %>
+  <% end %>
+  <div>
+    <%= link_to "マイページに戻る", user_path(@user) %>
+  </div>
+  
+</div>

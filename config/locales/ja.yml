@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      room:
+        name: ルーム名
+        introduction: 紹介文
+        address: 住所
+        room_image: ルーム画像
+        price: 金額
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 再度入力
