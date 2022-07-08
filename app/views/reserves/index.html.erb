@@ -1,0 +1,39 @@
+<div class="contents_wrapper">
+  <div class="main_contents">
+    <h2>予約ルーム一覧</h2>
+    <% if @reserves.empty?%>
+      <div class="note">
+        <a>予約ルームはありません<a>
+      </div>
+    <%end%>
+
+    <% @reserves.each do |res|%>
+      <div class="reserve_wrapper">
+        <div class="reserve_info">
+          <div class="reserve_image">
+            <img src="<%= res.room.room_image%>">
+          </div>
+          <div class="reserve_contents">
+            <h3>ルーム名</h3>
+            <p><%= res.room.name %></p>
+            <h3>開始日</h3>
+            <p><%= res.start_day %></p>
+            <h3>終了日</h3>
+            <p><%= res.end_day %></p>
+            <h3>予約確定日</h3>
+            <p><%= res.created_at.strftime("%Y-%m-%d")%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="sub_menu">
+    <ul>
+      <li><%= link_to "マイページ", user_path(session[:id]) %></li>
+      <li><%= link_to "ユーザー情報の編集", edit_user_path(session[:id]) %></li>
+      <li><%= link_to "ルームの登録", new_room_path %></li>
+      <li><%= link_to "登録ルーム一覧", rooms_path %></li>
+      <li><%= link_to "予約ルーム一覧", reserves_path %></li>
+    </ul>
+  </div>
+</div>

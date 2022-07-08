@@ -1,0 +1,29 @@
+<% if @all.present? %>
+  <div class="note">
+    <p>検索ワードに一致するものがありませんでした。全件表示します。</p>
+  </div>
+    <h2>検索結果 <%= @rooms.count %>件</h2>
+<% else %>
+  <h2>検索結果 <%= @rooms.count %>件</h2>
+<% end %>
+<div class="content_list">
+  <% @rooms.each do |room|%>
+    <div class="content_wrapper">
+      <%= link_to room_path(room) do %>
+        <div class="border">
+          <div class="room_image">
+            <img src="<%= room.room_image%>">
+          </div>
+          <div class="contents">
+            <h3>ルーム名</h3>
+            <%=room.name%>
+            <h3>料金</h3>
+            <%=room.price%>
+            <h3>住所</h3>
+            <%=room.address%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

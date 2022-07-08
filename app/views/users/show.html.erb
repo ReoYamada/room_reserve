@@ -1,0 +1,35 @@
+<div class="contents_wrapper">
+  <div class="user_info">
+    <h2>ユーザーページ</h2>
+    <div class="user_image">
+      <% if @user.user_image? %>
+        <img src="<%= @user.user_image %>">
+      <% else %>
+        <img src="/assets/default.jpeg">
+      <% end %>
+    </div>
+    <table>
+      <tr>
+        <th>名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <td><%= @user.introduction%></td>
+      </tr>
+    </table>
+  </div>
+  <div class="sub_menu">
+    <ul>
+      <li><%= link_to "マイページ", user_path(@user) %></li>
+      <li><%= link_to "ユーザー情報の編集", edit_user_path(@user) %></li>
+      <li><%= link_to "ルームの登録", new_room_path %></li>
+      <li><%= link_to "登録ルーム一覧", rooms_path %></li>
+      <li><%= link_to "予約ルーム一覧", reserves_path %></li>
+    </ul>
+  </div>
+</div>

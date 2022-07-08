@@ -1,0 +1,45 @@
+<div class="contents_wrapper">
+  <div class="form_wrapper">
+    <p>ルームの登録</p>
+    <%= form_with model: @room do |f|%>
+      <div class="form_content">
+        <p><span>必須</span><%= f.text_field :name, :placeholder => "ルーム名", :value => flash[:name] %></p>
+      </div>
+      <div class="form_content">
+        <p><span>必須</span><%= f.text_field :introduction, :placeholder => "ルーム紹介文", :value => flash[:introduction] %></p>
+      </div>
+      <div class="form_content">
+        <p><span>必須</span><%= f.text_field :price, :placeholder => "料金", :value => flash[:price] %></p>
+      </div>
+      <div class="form_content">
+        <p><span>必須</span><%= f.text_field :address, :placeholder => "住所", :value => flash[:address] %></p>
+      </div>
+      <div class="form_content">
+        <p><span>必須</span>
+        <%= f.label :room_image, "ルーム画像アップロード", :class => "image_input_btn"%>
+        <%= f.file_field :room_image, :class => "image_form" %></p>
+      </div>
+      <%= f.hidden_field :user_id, value:@user.id %>
+      <% if flash[:error_message].present? %>
+        <% flash[:error_message].each do |error| %>
+          <div>
+            <%=error%>
+          </div>
+        <% end %>
+      <% end %>
+      <%= f.submit "ルームの登録", :class => "create_btn" %>
+    <% end %>
+    <div>
+      <%=link_to "マイページに戻る", user_path(@user) %>
+    </div>
+  </div>
+  <div class="sub_menu">
+    <ul>
+      <li><%= link_to "マイページ", user_path(@user) %></li>
+      <li><%= link_to "ユーザー情報の編集", edit_user_path(@user) %></li>
+      <li><%= link_to "ルームの登録", new_room_path %></li>
+      <li><%= link_to "登録ルーム一覧", rooms_path %></li>
+      <li><%= link_to "予約ルーム一覧", reserves_path %></li>
+    </ul>
+  </div>
+</div>

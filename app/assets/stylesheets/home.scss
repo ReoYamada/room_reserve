@@ -1,0 +1,29 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.first_image_container {
+  height: 700px;
+  background-image: url(/assets/top.jpeg);
+  background-size : auto,100%;
+  background-position: center;
+}
+
+.first_search {
+  background-color: white;
+  width:300px;
+  position:relative;
+  top: 280px;
+  left:10%;
+  padding: 30px;
+  border-radius:10px;
+}
+
+.first_search h3 {
+  text-align: center;
+}
+
+.first_search input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}

@@ -1,0 +1,30 @@
+<div class="contents_wrapper">
+  <div class="form_wrapper">
+    <p>アカウントの編集</p>
+    <%= form_with model: @user do |f|%>
+      <div class="form_content">
+        <%= f.text_field :name, :placeholder => "ユーザー名" %>
+      </div>
+      <div class="form_content">
+        <%= f.text_area :introduction, :placeholder => "自己紹介" %>
+      </div>
+      <div>
+        <%= f.label :user_image, "ユーザー画像選択", :class => "image_input_btn" %>
+        <%= f.file_field :user_image, :class => "image_form" %>
+      </div>
+      <%= f.submit "アカウント編集内容の保存", :class => "create_btn edit_form" %>
+    <% end %>
+    <div>
+      <%=link_to "マイページへ戻る", user_path(@user)%>
+    </div>
+  </div>
+  <div class="sub_menu">
+    <ul>
+      <li><%= link_to "マイページ", user_path(@user) %></li>
+      <li><%= link_to "ユーザー情報の編集", edit_user_path(@user) %></li>
+      <li><%= link_to "ルームの登録", new_room_path %></li>
+      <li><%= link_to "登録ルーム一覧", rooms_path %></li>
+      <li><%= link_to "予約ルーム一覧", reserves_path %></li>
+    </ul>
+  </div>
+</div>

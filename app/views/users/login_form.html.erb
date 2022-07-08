@@ -1,0 +1,19 @@
+<div class="form_wrapper">
+  <p>ログインする</p>
+  <%= form_with model: @user do |f|%>
+    <div class="form_content">
+      <%= f.text_field :email, :placeholder => "メールアドレス",:value => @email %>
+    </div>
+    <div class="form_content">
+      <%= f.text_field :password, :placeholder => "パスワード",:value => @password, :type => "password" %>
+    </div>
+    <div class="error_message">
+      <%= @error_message %>
+    </div>
+    <%= f.submit "ログイン", :class => "create_btn" %>
+  <% end %>
+  <div>
+    <%= link_to "アカウント作成はこちら", new_user_path %>
+  </div>
+  
+</div>

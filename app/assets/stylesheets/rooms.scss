@@ -1,0 +1,57 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+h2 {
+  padding:30px;
+}
+
+.content_list {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.content_wrapper {
+  width:25%;
+  padding:15px;
+}
+
+.border {
+  border:1px solid black;
+  padding:5px;
+}
+
+.room_image img {
+  width:100%;
+}
+
+.contents {
+  margin-left:10px;
+}
+
+.room_info {
+  display:flex;
+
+}
+.room_show_image {
+  margin-left:30px;
+  margin-bottom:30px;
+  width:50%;
+}
+
+.room_show_image img{
+  width:100%;
+}
+
+.room_contents {
+  margin-top:50px;
+  margin-left:50px;
+}
+
+.room_contents h3 {
+  margin-top:20px;
+}
+
+a {
+  color:black;
+  text-decoration:none;
+}
