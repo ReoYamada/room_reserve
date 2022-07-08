@@ -28,8 +28,6 @@ class ReservesController < ApplicationController
     if @reserve.save
       flash[:notice] ="予約が完了しました"
       redirect_to user_path(session[:id])
-    else
-      redirect_to controller: :home, action: :top
     end
   end
 

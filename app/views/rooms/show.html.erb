@@ -16,8 +16,9 @@
       <% if session[:id] == @room.user_id %>
         <%= link_to "ルーム編集", edit_room_path(@room)%>
       <% end %>
-      <%= link_to "ルーム一覧に戻る", rooms_path %>
+      
       <% if @user.present? %>
+        <%= link_to "ルーム一覧に戻る", rooms_path %>
         <div>
           <%= form_with url: new_reserve_path, method: :get do |f|%>
             <div class="form_content">
@@ -35,9 +36,17 @@
             <% if flash[:error].present? %>
               <%= flash[:error] %>
             <% end %>
-            <%= f.submit "予約する", :class => "create_btn" %>
+            <div>
+              <%= f.submit "予約する", :class => "create_btn" %>
+            </div>
           <% end %>
         </div>
+      <% else %>
+        <p class="note">ルームを予約するにはログインしてください</p>
+        <div>
+          <%= link_to "ログインページはこちら", login_path %>
+        </div>
+        <%= link_to "新規会員登録はこちら", new_user_path %>
       <% end %>  
     </div>
   </div>

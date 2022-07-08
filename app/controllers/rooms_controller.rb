@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_current_user, {only:[:new, :create,:edit, :update]}
+  before_action :set_current_user, {only:[:new, :create, :show, :edit, :update]}
   before_action :authenticate_user, {only: [:edit, :update]}
   before_action :set_current_room, {only: [:show, :edit]}
   before_action :ensure_correct_room, {only: [:edit, :update]}

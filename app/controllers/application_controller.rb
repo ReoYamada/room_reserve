@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
 
   def set_current_user
-    @user = User.find(session[:id])
+    if session[:id]
+      @user = User.find(session[:id])
+    end
   end
 
   def authenticate_user
